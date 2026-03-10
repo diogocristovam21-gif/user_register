@@ -19,6 +19,8 @@ int main(){
     }   else{
             puts("Eerr...oi? Adeus.");
             return 0;
+            getchar();
+            getchar();
         }
     
     printf("\n|============================================================================================|\n");   
@@ -27,16 +29,24 @@ int main(){
     printf("Poderia digitar o seu nome a seguir: ");
     scanf("%49s", nome);
     printf("Olá %s, prazer em conhece-lo, gostaria de lhe pedir algumas informações.\n", nome);
+    int n1 = 0;
+
+    do{
     printf("Agora, digite sua idade aqui: ");
-    while(getchar() != '\n');
-    scanf("%d", &idade);
-    if (idade >= 18 && idade <= 40){
-        printf("Interessante, %d é uma ótima idade.\n", idade);
-    }       else if (idade > 40){
-                puts("Já possui uma idade mais avançada, mas isso significa que tem mais experiência de vida.");
-            }       else{
-                        puts("Jovenzinho, ainda há muito do que se desenvolver.");
-                    }
+    n1 = scanf("%d", &idade);
+        if(n1 != 1 && idade >= 18 && idade <= 40){ 
+            printf("Interessante, %d é uma ótima idade.\n", idade);
+                    if(idade > 40){
+                        puts("Já possui uma idade mais avançada, mas isso significa que tem mais experiência de vida.");
+                    }   else{
+                            puts("Jovenzinho, ainda há muito do que se desenvolver.");
+                        }
+                    }   else{
+                            puts("Idade inválida ou caracteres utilizado!!");
+                            while(getchar() != '\n');
+                            n1 = 0;
+                        }            
+    }while (n1 != 1); 
     printf("Nome: %s\nIdade: %d", nome, idade);
     int r1 = 0, r2 = 0;
     float peso, altura; 
@@ -77,61 +87,71 @@ int main(){
 
     printf("\n|============================================================================================|\n");    
     //separacao de informacoes Escolaridade e Área de Estudo
-    
-    int escolaridade;
+
     char escolaridade1 [20], area1[20];
+    int e1 = 0, e2 = 0, area = -1, escolaridade = -1;
+    do{
     puts("Agora gostaria que me dissesse seu nível de escolaridade, selecione uma das opções a seguir:");
     puts("1 - Ensino Fundamental");
     puts("2 - Ensino Médio");
     puts("3 - Ensino Superior");
     printf("Digite o número correspondente a sua escolaridade: ");
-    while (getchar() != '\n'); 
-    scanf("%d", &escolaridade);
-
-    switch (escolaridade){
-        case 1:
-            puts("Você selecionou Ensino Fundamental.");
-            strcpy(escolaridade1,"Ensino Fundamental");
-            break;
-        case 2:
-            puts("Você selecionou Ensino Médio.");
-            strcpy(escolaridade1,"Ensino Médio.");
-            break; 
-        case 3:
-            puts("Você selecionou Ensino Superior.");
-            strcpy(escolaridade1,"Ensino Superior.");
-            puts("Em que área seu curso corresponde?");
-            int area;
-            puts("1 - Exatas");
-            puts("2 - Humanas");
-            puts("3 - Biológicas");
-            printf("Digite o número correspondente a área do seu curso: ");
-            while(getchar() != '\n');
-            scanf("%d", &area);
-            switch (area){
-                case 1:
-                    puts("Você selecionou Exatas.");
-                    strcpy(area1, "Exatas");
-                    break;
-                case 2:
-                    puts("Você selecionou Humanas.");
-                    strcpy(area1, "Humanas");
-                    break;
-                case 3:
-                    puts("Você selecionou Biológicas.");
-                    strcpy(area1, "Biológicas.");
-                    break;
-                default:
-                    puts("Opção inválida.");
-                    break;
+    e1 = scanf("%d", &escolaridade);
+        if (e1 != 1 && escolaridade < 4){
+            switch (escolaridade){
+            case 1:
+                puts("Você selecionou Ensino Fundamental.");
+                strcpy(escolaridade1,"Ensino Fundamental");
+                break;
+            case 2:
+                puts("Você selecionou Ensino Médio.");
+                strcpy(escolaridade1,"Ensino Médio.");
+                break; 
+            case 3:
+                puts("Você selecionou Ensino Superior.");
+                strcpy(escolaridade1,"Ensino Superior.");
+                puts("Em que área seu curso corresponde?");           
+                puts("1 - Exatas");
+                puts("2 - Humanas");
+                puts("3 - Biológicas");
+                do{
+                    printf("Digite o número correspondente a área do seu curso: ");
+                    e2 = scanf("%d", &area);
+                        if (e2 != 1 && area < 4){
+                            switch (area){
+                                case 1:
+                                    puts("Você selecionou Exatas.");
+                                    strcpy(area1, "Exatas");
+                                    break;
+                                case 2:
+                                    puts("Você selecionou Humanas.");
+                                    strcpy(area1, "Humanas");
+                                    break;
+                                case 3:
+                                    puts("Você selecionou Biológicas.");
+                                    strcpy(area1, "Biológicas.");
+                                    break;
+                                default:
+                                    puts("Opção inválida.");
+                                    break;
+                            }
+                        }   else{
+                                puts("Escolha inválida!");
+                                while(getchar() != '\n');
+                                e2 = 0, area = -1;
+                            }
+                }while(e2 != 1);
+            default:
+                puts("Opção inválida.");
+                break;            
             }
-
-            break;
-        default:
-            puts("Opção inválida.");
-            break;
-    
+        }   else{
+                puts("Escolha inválida!!");
+                while(getchar() != '\n');
+                e1 = 0, escolaridade = -1;
         }
+    }while (e1 != 1);
+
     printf("Escolaridade: %s", escolaridade1);
     if (area1[0]){
         printf("\nÁrea: %s", area1);
