@@ -159,7 +159,31 @@ int main(){
     if (area1[0]){
         printf("\nÁrea: %s", area1);
     }
+
     printf("\n|============================================================================================|\n");
+    //Separação para documentação!!
+
+    int cpf1 = 0, rg2 = 0;
+    long long int cpf, rg;
+    printf("Abaixo digite alguns documentos pessoais para finalizarmos seu cadastro.\n");
+    do{
+    printf("Digite o CPF (Apenas números): ");
+    cpf1 = scanf("%d", &cpf);
+        if(cpf1 == 1){
+            puts("CPF válido!!");
+        }   else{
+                puts("CPF inválido ou caracteres foram utilizados.");
+                while(getchar() != '\n');
+                cpf1 = 0, cpf = 0;
+            }
+    }while(cpf1 != 1);
+
+    printf("Digite o RG (Apenas números): ");
+    scanf("%d", &rg);
+   
+
+
+
     printf("                                     Programa finalizado                                          ");
     printf("\n|============================================================================================|\n");
     getchar();
