@@ -89,17 +89,19 @@ int main(){
     printf("\n|============================================================================================|\n");    
     //separacao de informacoes Escolaridade e Área de Estudo
 
-    char escolaridade1 [20], area1[20];
-    int e1 = 0, e2 = 0, area = -1, escolaridade = -1;
+    char escolaridade1 [20] = "", area1[20] = "";
+    int e1, e2, area, escolaridade;
     do{
     puts("Agora gostaria que me dissesse seu nível de escolaridade, selecione uma das opções a seguir:");
     puts("1 - Ensino Fundamental");
     puts("2 - Ensino Médio");
     puts("3 - Ensino Superior");
     printf("Digite o número correspondente a sua escolaridade: ");
+
     e1 = scanf("%d", &escolaridade);
     while(getchar() != '\n');
-        if (e1 != 1 && escolaridade > 4){
+
+        if (e1 == 1){
             switch (escolaridade){
             case 1:
                 puts("Você selecionou Ensino Fundamental.");
@@ -116,11 +118,10 @@ int main(){
                 puts("1 - Exatas");
                 puts("2 - Humanas");
                 puts("3 - Biológicas");
-                break;
                 do{
                     printf("Digite o número correspondente a área do seu curso: ");
                     e2 = scanf("%d", &area);
-                        if (e2 != 1 && area < 4){
+                        if (e2 == 1){
                             switch (area){
                                 case 1:
                                     puts("Você selecionou Exatas.");
@@ -140,50 +141,43 @@ int main(){
                             }
                         }   else{
                                 puts("Escolha inválida!");
-                                while(getchar() != '\n');
-                                e2 = 0, area = -1;
+                                e2 = 0, area = 0;
                             }
                 }while(e2 != 1);
+                break;
             default:
                 puts("Opção inválida.");
                 break;            
             }
         }   else{
                 puts("Escolha inválida!!");
-                while(getchar() != '\n');
-                e1 = 0, escolaridade = -1;
+                e1 = 0, escolaridade = 0;
         }
     }while (e1 != 1);
 
     printf("Escolaridade: %s", escolaridade1);
-    if (area1[0]){
+    if (area1[0] > 0){
         printf("\nÁrea: %s", area1);
     }
 
     printf("\n|============================================================================================|\n");
-    //Separação para documentação!!
+    //Separação para documentação pessoal!!
 
-    int cpf1 = 0, rg2 = 0;
-    long long int cpf, rg;
+    char cpf [20];
     printf("Abaixo digite alguns documentos pessoais para finalizarmos seu cadastro.\n");
+
     do{
     printf("Digite o CPF (Apenas números): ");
-    cpf1 = scanf("%d", &cpf);
-        if(cpf1 == 1){
-            puts("CPF válido!!");
+    scanf("%11s", cpf);
+    while(getchar() != '\n');
+        if(strlen(cpf) != 11){
+            printf("Você digitou %d caracteres, seu CPF necessita ter 11 caracteres!!\n", (int)strlen(cpf));
         }   else{
-                puts("CPF inválido ou caracteres foram utilizados.");
-                while(getchar() != '\n');
-                cpf1 = 0, cpf = 0;
+                puts("CPF confirmado com sucesso!!");
             }
-    }while(cpf1 != 1);
-
-    printf("Digite o RG (Apenas números): ");
-    scanf("%d", &rg);
+    }while(strlen(cpf) != 11);
    
-
-
-
+    printf("\n|============================================================================================|\n");
     printf("                                     Programa finalizado                                          ");
     printf("\n|============================================================================================|\n");
     getchar();
