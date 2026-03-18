@@ -11,8 +11,8 @@ int main(){
 
     printf("\n|============================================================================================|\n");    
     puts("Olá Dev!");
-    printf("Detalhes importantes:\n1. Por padrão falamos PT-BR, então na hora de colocar números \"reais\" utilizem \",\" e não \".\".");
-    puts("2. O CPF se trata de uma String pois o C não lida bem com este tipo de conceito.(Pelo menos no meu conhecimento.)");
+    printf("\nDetalhes importantes:\n1. Por padrão falamos PT-BR, então na hora de colocar números \"reais\" utilizem \",\" e não \".\".");
+    printf("\n2. O CPF se trata de uma String pois o C não lida bem com este tipo de conceito.(Pelo menos no meu conhecimento.)\n");
     printf("Digite \"Confirme\" para continuar: ");
     scanf("%s", confirmacao);
 
