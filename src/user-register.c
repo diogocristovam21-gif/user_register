@@ -178,7 +178,41 @@ int main(){
                 puts("CPF confirmado com sucesso!!");
             }
     }while(strlen(cpf) != 11);
-   
+
+    char cidade [25], estado [25], pais [20], rua [40], numerocasa[5];
+    int confirmation5 = 0, choice;
+
+	puts("informe seu endereço abaixo: ");
+	do{
+		printf("Páis: ");
+		scanf("%19s", pais);
+		while(getchar() != '\n');
+		printf("Estado: ");
+		scanf("%24s", estado);
+		while(getchar() != '\n');
+        printf("Cidade: ");
+        scanf("%24s", cidade);
+        while(getchar() != '\n');
+		printf("Rua: ");
+		scanf("%39s", rua);
+		while(getchar() != '\n');
+		printf("Número da casa (Se não possui, digite SN): ");
+		scanf("%4s", numerocasa);
+		while(getchar() != '\n');
+		printf("Endereço está correto?\n1 - Correto\n2 - Incorreto (Refazer)\n");
+		scanf("%d", &choice);
+		while(getchar() != '\n');
+
+		if(choice == 2){
+			puts("Ok, coloque novamente seu endereço.");
+		}	else if(choice == 1){
+				puts("Endereço foi adicionado sucesso.");
+				confirmation5 = 1;
+			}	else{
+					puts("Escolha inválida.");
+                }
+    }while(confirmation5 == 0);
+
     printf("\n|============================================================================================|\n");
     printf("                                     Programa finalizado                                          ");
     printf("\n|============================================================================================|\n");
